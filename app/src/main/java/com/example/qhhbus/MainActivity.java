@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements IEventListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        QhhEventBusHelper.getInstance().unRegister(this);
+        //QhhEventBusHelper.getInstance().unRegister(this);
     }
 
     @Override
