@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.qhheventbus.QhhEventBus;
 import com.example.qhheventbus.QhhEventBusHelper;
+import com.example.qhheventbus.Subscribe;
+import com.example.qhheventbus.ThreadMode;
 import com.example.qhheventbus.listener.IEventListener;
 
 public class MainActivity extends AppCompatActivity implements IEventListener {
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements IEventListener {
 
         QhhEventBusHelper.getInstance().register(this);
 
+        QhhEventBus.getInstance().register(this);
+
     }
 
     @Override
@@ -48,4 +53,10 @@ public class MainActivity extends AppCompatActivity implements IEventListener {
         Log.d("qhhqhh", "threadName = " + threadName + ", msg = " + msg);
         mHello.setText(msg);
     }
+
+    @Subscribe(threadMode = ThreadMode.POSTING)
+    public void onQhhEvnetBus(Object message){
+
+    }
+
 }

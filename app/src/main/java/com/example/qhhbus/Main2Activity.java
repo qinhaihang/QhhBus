@@ -1,22 +1,23 @@
 package com.example.qhhbus;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.example.qhheventbus.QhhEventBusHelper;
-import com.example.qhheventbus.listener.IEventListener;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
-public class Main2Activity extends AppCompatActivity implements IEventListener {
+public class Main2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        QhhEventBusHelper.getInstance().register(this);
+        EventBus.getDefault().register(this);
+        EventBus.getDefault().unregister(this);
     }
 
-    @Override
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessage(Object object) {
 
     }
