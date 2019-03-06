@@ -15,14 +15,14 @@ import java.lang.reflect.Method;
 public class SubscriberMethod {
     final Method mMethod;
     final ThreadMode mThreadMode;
-    final Class<?> mParameterType;
+    final Class<?> mEvnetType;
     /** Used for efficient comparison */
     String methodString;
 
-    public SubscriberMethod(Method method, ThreadMode threadMode,Class<?> parameterType) {
+    public SubscriberMethod(Method method, ThreadMode threadMode,Class<?> evnetType) {
         mMethod = method;
         mThreadMode = threadMode;
-        mParameterType = parameterType;
+        mEvnetType = evnetType;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SubscriberMethod {
             StringBuilder builder = new StringBuilder(64);
             builder.append(mMethod.getDeclaringClass().getName());
             builder.append('#').append(mMethod.getName());
-            builder.append('(').append(mParameterType.getName());
+            builder.append('(').append(mEvnetType.getName());
             methodString = builder.toString();
         }
     }

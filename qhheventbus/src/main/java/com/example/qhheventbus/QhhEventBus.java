@@ -71,7 +71,7 @@ public class QhhEventBus {
      */
     private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {
         //通过反射获取得到的方法的参数类型来保存subscriber?? 也就是事件类型
-        Class<?> parameterType = subscriberMethod.mParameterType;
+        Class<?> parameterType = subscriberMethod.mEvnetType;
         CopyOnWriteArrayList<Subscription> subscriptions = mSubscriberByEventType.get(parameterType);
         Subscription newSubscription = new Subscription(subscriber, subscriberMethod);
 
